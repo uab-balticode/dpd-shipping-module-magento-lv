@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+  
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * or OpenGPL v3 license (GNU Public License V3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * or
+ * http://www.gnu.org/licenses/gpl-3.0.txt
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@balticode.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module to newer
+ * versions in the future.
+ *
+ * @category   Balticode
+ * @package    Balticode_Dpd
+ * @copyright  Copyright (c) 2013 Aktsiamaailm LLC (http://en.balticode.com/)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @license    http://www.gnu.org/licenses/gpl-3.0.txt  GNU Public License V3.0
+ * @author     Matis Halmann
+ * 
+
+ */
+-->
+
+
+<config>
+    <modules>
+        <Balticode_Postoffice>
+            <version>0.1.2</version>
+        </Balticode_Postoffice>
+    </modules>
+    
+    
+    <frontend>
+        <routers>
+            <balticode_postoffice>
+                <use>standard</use>
+                <args>
+                    <module>Balticode_Postoffice</module>
+                    <frontName>balticode_postoffice</frontName>
+                </args>
+            </balticode_postoffice>
+        </routers>
+        <layout>
+            <updates>
+                <balticode_postoffice>
+                    <file>balticode_postoffice.xml</file>
+                </balticode_postoffice>
+            </updates>
+        </layout>
+         <events>
+            <checkout_onepage_controller_success_action>  
+                <observers>  
+                    <balticode_postoffice_send_data>
+                        <type>model</type>  
+                        <class>Balticode_Postoffice_Helper_Data</class>  
+                        <method>autoSendAfterOnepage</method>  
+                    </balticode_postoffice_send_data>
+                </observers>  
+            </checkout_onepage_controller_success_action>  
+            <checkout_multishipping_controller_success_action>  
+                <observers>  
+                    <balticode_postoffice_send_multidata>
+                        <type>model</type>  
+                        <class>Balticode_Postoffice_Helper_Data</class>  
+                        <method>autoSendAfterMultishipping</method>  
+                    </balticode_postoffice_send_multidata>
+                </observers>  
+            </checkout_multishipping_controller_success_action>  
+        </events>
+        <translate>
+            <modules>
+                <balticode_postoffice>
+                    <files>
+                        <default>Balticode_Postoffice.csv</default>
+                    </files>
+                </balticode_postoffice>
+            </modules>
+        </translate>
+    </frontend>
+    
+    <adminhtml>
+        <layout>
+            <updates>
+                <balticode_postoffice>
+                    <file>balticode_postoffice.xml</file>
+                </balticode_postoffice>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <balticode_postoffice>
+                    <files>
+                        <default>Balticode_Postoffice.csv</default>
+                    </files>
+                </balticode_postoffice>
+            </modules>
+        </translate>
+        <events>
+            <sales_order_shipment_save_before>
+                <observers>
+                    <balticode_postoffice_send_shipment>
+                        <type>model</type>  
+                        <class>Balticode_Postoffice_Helper_Data</class>  
+                        <method>autoSendAfterShipment</method>  
+                    </balticode_postoffice_send_shipment>
+                </observers>  
+            </sales_order_shipment_save_before>
+        </events>        
+    </adminhtml>
+    <admin>
+        <translate>
+            <modules>
+                <balticode_postoffice>
+                    <files>
+                        <default>Balticode_Postoffice.csv</default>
+                    </files>
+                </balticode_postoffice>
+            </modules>
+        </translate>
+        <routers>
+            <balticode_postoffice>
+                <use>admin</use>
+                <args>
+                    <module>Balticode_Postoffice</module>
+                    <frontName>balticode_postoffice</frontName>
+                </args>
+            </balticode_postoffice>
+        </routers>
+            
+    </admin>
+    
+    <global>
+        <models>
+            <balticode_postoffice>
+                <class>Balticode_Postoffice_Model</class>
+                <resourceModel>balticode_postoffice_mysql4</resourceModel>
+            </balticode_postoffice>
+            <balticode_postoffice_mysql4>
+                <class>Balticode_Postoffice_Model_Mysql4</class>
+                <entities>
+                    <office>
+                        <table>balticode_postoffice</table>
+                    </office>
+                    <carriermodule>
+                        <table>balticode_carriermodule</table>
+                    </carriermodule>
+                </entities>
+            </balticode_postoffice_mysql4>
+        </models>
+        <blocks>
+            <balticode_postoffice>
+                <class>Balticode_Postoffice_Block</class>
+            </balticode_postoffice>
+        </blocks>
+        <resources>
+            <balticode_postoffice_setup>
+                <setup>
+                    <module>Balticode_Postoffice</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </balticode_postoffice_setup>
+            <balticode_postoffice_write>
+                <setup>
+                    <module>Balticode_Postoffice</module>
+                </setup>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </balticode_postoffice_write>
+            <balticode_postoffice_read>
+                <setup>
+                    <module>Balticode_Postoffice</module>
+                </setup>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </balticode_postoffice_read>
+        </resources>
+        <helpers>
+            <balticode_postoffice>
+                <class>Balticode_Postoffice_Helper</class>
+            </balticode_postoffice>
+        </helpers>
+
+        <events>
+            <sales_order_place_before>
+                <observers>
+                    <balticode_postoffice_clear_session>
+                        <type>model</type>  
+                        <class>Balticode_Postoffice_Helper_Data</class>  
+                        <method>clearSessions</method>  
+                    </balticode_postoffice_clear_session>
+                </observers>  
+            </sales_order_place_before>
+        </events>        
+        <translate>
+            <modules>
+                <balticode_postoffice>
+                    <files>
+                        <default>Balticode_Postoffice.csv</default>
+                    </files>
+                </balticode_postoffice>
+            </modules>
+        </translate>
+    
+    </global>
+     
+    <crontab>
+        <jobs>
+            <balticode_postoffice_update_carrier_data>
+                <schedule>
+                    <cron_expr>*/10 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>balticode_postoffice/updater::updateCarriers</model>
+                </run>
+            </balticode_postoffice_update_carrier_data>
+        </jobs>
+            
+    </crontab>
+</config>

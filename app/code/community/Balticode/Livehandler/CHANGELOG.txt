@@ -1,0 +1,11 @@
+0.1.1
+- Initial release
+
+0.1.2
+- Varien_Directory_Collection dependency removed
+
+0.1.3
+- Additional error fixes
+
+0.1.4
+- Added checkbox to order view for massactions, DPD extra buttons added

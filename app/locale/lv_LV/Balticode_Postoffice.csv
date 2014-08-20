@@ -1,0 +1,90 @@
+Rebuild successful,Atjaunošana veiksmīga
+Rebuild postoffices for this carrier,Atjaunot pārvadātāja adrešu datus
+Rebuilding postoffices for the carrier %s takes a little while... Continue?,Adrešu datu atjaunošana šim pārvadātājam %s prasīs laiku..Turpināt?
+Automatic data sending not applicable,Automatiska datu nosūtīšana nav piemērojama
+Loading offices…,Ielādē adreses…
+After successful checkout,Pēc sekmīgas norēķināšanās
+After successful shipment creation,Pēc sekmīgas sūtījuma izveides
+select ,izvēlieties
+I will send data myself by clicking on the button,"Es nosūtīšu datus pats, nospiežot pogu"
+Print packing slip,Izdrukāt manifestu
+Send shipping data to server,Nosutīt datus uz serveri
+"Data sent to server, please verify the status from the order comments","Dati nosūtīti uz serveri, lūdzu pārbaudiet statusu pasūtījuma komentāros"
+Disable populating list of last selected parcel terminals,Atslēgt pēdējo izvēlēto PAKU BODE punktu sarakstu aizpildi
+Show customer one dropdown instead of two,"Rādīt klientam vienu izvēlnes logu, divu vietā"
+"If this setting is enabled, then customer will be displayed only with a list of stores you entered.<br/>If this setting is disabled, then customer has to pick country/city first and then customer will be displayed second select menu, which contains stores in the selected county/city.","Ja šī opcija ir ieslēgta, tad klientam paradīsies tikai Jūsu ievadīto adrešu saraksts. <br/> Ja šī opcija ir atslēgta, tad klientam vispirms jāizvēlas valsts/pilsēta un tad parādīsies otrs izvēlnes logs, kurš satur adreses izvēlētajā valstī/pilsētā."
+,
+Enable Cash on Delivery (requires extra plugin),Atļaut COD (nepeiciešama paplidus konfigurācija)
+"Extra fee, when using Cash on delivery","Papildus maksa, izmantojot COD"
+Enabled,Ieslēgts
+Title,Nosaukums
+Price,Cena
+"Price per country","Cena par valsti"
+Maximum allowed package weight for this carrier,Maksimāli atļautais svars šim pārvadātājam
+Handling action,Apstrādes darbība
+Enable free shipping,Atļaut bezmaksas piegādi
+Free shipping subtotal,Bezmaksas piegādes starpsumma
+Show method if not applicable,"Rādīt metodi, ja nav piemērots"
+Error message displayed to the user,Kļūdas paziņojums tiek parādīts klientam
+Ship to applicable countries,Sūtīt uz atļautām valstīm
+Ship to Specific countries,Sūtīt uz specifiskām valstīm
+Width in pixels for city select menu,Pilsētas izvēlnes platums pikseļos
+Width in pixels for office select menu,Adreses izvēlnes platums pikseļos
+Update interval for the postoffice list in minutes,PAKU BODE saraksta atjaounošanas intervāls minūtēs
+Rebuild Postoffice List,Atjaunot PAKU BODE sarakstu
+Sort order,Šķirošanas kārtība
+Show short office names,Rādīt īsos nosaukumus
+Sort offices by priority,Šķirot adreses pēc  prioritātes
+Auto send data to server,Automātiska datu nosūtīšana uz serveri
+Only if the order has been paid for or the order is COD,Tikai ja pasūtījums ir apmaksāts vai ja tas ir COD
+Yes: Shows only office name<br/>No: Shows office name and address,JĀ: Parāda tikai nosaukumu <br/> NĒ: Parāda nosaukumu un adresi
+Yes: Offices from bigger cities will be in front<br/>No: Offices are sorted alphabetically<br/><b>changing this setting requires rebuild</b>,"Jā: Lielāko pilsētu adreses tiks attēlotas pirmās <br/> NĒ: Adreses tiek attēlotas alfabētiskā secība <br/><b>lai izmainītu šo pieprasījumu, nepieciešama pārbūve</b>"
+Per Order: Shipping cost equals Shipping price<br/>Per Package: Shipping cost equals Number of Items in cart multiplied by shipping price,Par pasūtījumu: Piegādes maksa ir vienāda ar piegādes cenu <br/> Par sūtījumu: Piegādes maksa ir vienāda ar piegādes cenu reiz vienību skaits grozā
+It is not recommended to update the list of offices more often than once a day.,Nav ieteicams atjaunot adrešu sarakstu biežāk kā reizi dienā.
+"If post offices are not displayed correctly, then rebuilding the list may help","Ja adrešu saraksts netiek attēlots korekti, tad saraksta atjaunošana var palīdzēt."
+I have packing slips,Man ir pavadlapas
+Auto send data to DPD server,Automātiska datu nosūtīšana uz DPD serveri
+"Envelopes (ā‰¤ 0,5kg)",Aploksnes(<0.5kg)
+"Parcels (ā‰¤ 31,5kg)",Pakas(<31.5kg)
+Pallets,Paletes
+Pickup date,Paņemšanas datums
+Pickup time,Paņemšanas laiks
+ - select pickup date - ,izvēlieties paņemšanas datumu
+Select pickup date first,vispirms izvēlieties paņemšanas datumu
+Courier cannot be called for orders %s,Nav iespējams izsaukt kurjeru pasūtījumiem %s
+Cannot call courier,Nav iespējams izsaukt kurjeru 
+Country,Valsts
+Base shipping price,Sūtīšanas pamatcena
+Price per additional 10kg over base 10kg,"Cena par papildus 10kg, kas pārsniedz pamata 10kg"
+Free shipping from price,Bezmaksas piegāde sākot no
+Add shipping country,Pievienot nosūtītājvalsti
+Comment to courier,Komentārs kurjeram
+Courier comes to pick up your shipment on %1$s between %2$s,"Kurjers ierodadīsies pēc pasūtījuma %1$s, laika posmā no %2$s līdz %3$s"
+and,un
+"Price per country","Cena par valsti"
+"If country is not listed here, but this method is available, then general handling fee is applied","Ja valsts nav pieejama sarakstā, bet piegāde ir atļauta, tad tiek piemērota standarta apkalpošanas maksa"
+Disable this carrier if product's short description contains HTML comment &lt;!-- no dpd_ee_module --&gt;,"Atslēgt šo pārvadātāju, ja produkta apraksts satur HTML komentāru &lt;!-- no dpd_ee_module --&gt;"
+Allow courier pickup,Atļaut pieteikt kurjeru
+DPD Self service username,DPD Self service lietotājvārds
+DPD Self-service password,DPD Self service parole
+When to send parcel data,Kad nosūtīt datus par sūtījumu
+Pickup address name,Paņemšanas adrese - nosaukums
+Pickup address company,Paņemšanas adrese - uzņēmums
+Pickup address e-mail,Paņemšanas adrese - e-pasts
+Pickup address phone,Paņemšanas adreses - tālrunis
+Pickup address street,Paņemšanas adrese - iela
+"Pickup address city, county","Paņemšanas adrese - pilsēta, rajons"
+Pickup address zip code,Paņemšanas adrese - pasta indekss
+Pickup address country,Paņemšanas adrese - valsts
+Show pickup address on packing label,Rādīt paņemšanas adresi uz pavadlapas
+Save address for current customer,Saglabāk klienta adresi
+Labels position on packing slip,Pavadlapas pozīcija iepakošanas sarakstā
+Api URL ,Api URL
+DPD - Dpd.lt - Courier service,DPD - kurjera piegāde
+Position: %s,Pozīcija: %s
+Order courier to pick up goods,Izsaukt kurjeru 
+Tomorrow,Rīt
+Today,Šodien
+Http request timeout,Http pieprasījuma starplaiks
+"If timeout is greater than 10 seconds, then parcel data can only be sent manually. ","Ja starplaiks lielāks par 10sec., datus par sūtījumu var nosūtīt tikai manuāli."
+"DPD - Dpd.lt - SiuntÅ³ taÅkas,","DPD PAKU BODE"
