@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * or OpenGPL v3 license (GNU Public License V3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * or
+ * http://www.gnu.org/licenses/gpl-3.0.txt
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@balticode.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module to newer
+ * versions in the future.
+ *
+ * @category   Balticode
+ * @package    Balticode_Dpd
+ * @copyright  Copyright (c) 2013 UAB BaltiCode (http://www.balticode.com/)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @license    http://www.gnu.org/licenses/gpl-3.0.txt  GNU Public License V3.0
+ * @author     Matis Halmann
+ * 
+ 
+ */
+-->
+
+
+<config>
+    <modules>
+        <Balticode_DpdLT>
+            <version>0.1.5</version>
+        </Balticode_DpdLT>
+    </modules>
+    
+    
+    <frontend>
+        <layout>
+            <updates>
+                <balticode_dpdlt>
+                    <file>balticode_dpdlt.xml</file>
+                </balticode_dpdlt>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <balticode_dpdlt>
+                    <files>
+                        <default>Balticode_DpdLT.csv</default>
+                    </files>
+                </balticode_dpdlt>
+            </modules>
+        </translate>
+    </frontend>
+    
+    <adminhtml>
+        <layout>
+            <updates>
+                <balticode_dpdlt>
+                    <file>balticode_dpdlt.xml</file>
+                </balticode_dpdlt>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <balticode_dpdlt>
+                    <files>
+                        <default>Balticode_DpdLT.csv</default>
+                    </files>
+                </balticode_dpdlt>
+            </modules>
+        </translate>
+        <events>
+            <sales_order_shipment_save_after>
+                <observers>
+                    <balticode_dpdlt_add_tracking_number>
+                        <type>model</type>  
+                        <class>Balticode_DpdLT_Model_Observer</class>  
+                        <method>addTrackingToShipment</method>  
+                    </balticode_dpdlt_add_tracking_number>
+                </observers>  
+            </sales_order_shipment_save_after>
+        </events>        
+        
+    </adminhtml>
+    
+    <admin>
+        
+        <translate>
+            <modules>
+                <balticode_dpdlt>
+                    <files>
+                        <default>Balticode_DpdLT.csv</default>
+                    </files>
+                </balticode_dpdlt>
+            </modules>
+        </translate>
+        <routers>
+            <balticode_dpdlt>
+                <use>admin</use>
+                <args>
+                    <module>Balticode_DpdLT</module>
+                    <frontName>balticode_dpdlt</frontName>
+                </args>
+            </balticode_dpdlt>
+        </routers>
+            
+    </admin>
+    
+    <global>
+        <models>
+            <balticode_dpdlt>
+                <class>Balticode_DpdLT_Model</class>
+            </balticode_dpdlt>
+        </models>
+        <blocks>
+            <balticode_dpdlt>
+                <class>Balticode_DpdLT_Block</class>
+            </balticode_dpdlt>
+        </blocks>
+        <resources>
+            <balticode_dpdlt_setup>
+                <setup>
+                    <module>Balticode_DpdLT</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </balticode_dpdlt_setup>
+            <balticode_dpdlt_write>
+                <setup>
+                    <module>Balticode_DpdLT</module>
+                </setup>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </balticode_dpdlt_write>
+            <balticode_dpdlt_read>
+                <setup>
+                    <module>Balticode_DpdLT</module>
+                </setup>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </balticode_dpdlt_read>
+        </resources>
+        <helpers>
+            <balticode_dpdlt>
+                <class>Balticode_DpdLT_Helper</class>
+            </balticode_dpdlt>
+        </helpers>
+
+    
+    </global>
+    <default>
+        <carriers>
+            <balticodedpdlt>
+                <active>0</active>
+                <title>DPD Siuntų taškai</title>
+                <max_package_weight>20</max_package_weight>
+                <sort_offices>1</sort_offices>
+                <shortname>1</shortname>
+                <drop_menu_selection>1</drop_menu_selection>
+                <disable_session>1</disable_session>
+                <model>balticode_dpdlt/post</model>
+                <update_interval>1440</update_interval>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>EE,LV,LT</specificcountry>
+                <courier_enable>1</courier_enable>
+                <api_url>https://dpdintegration.lv/parcel_interface/</api_url>
+                <handling_fee>4.90</handling_fee>
+                <handling_fee_country><![CDATA[a:3:{s:18:"_1388439524852_852";a:4:{s:10:"country_id";s:2:"EE";s:10:"base_price";s:4:"4.90";s:8:"kg_price";s:1:"0";s:18:"free_shipping_from";s:0:"";}s:17:"_1388442604053_53";a:4:{s:10:"country_id";s:2:"LV";s:10:"base_price";s:5:"12.90";s:8:"kg_price";s:1:"0";s:18:"free_shipping_from";s:0:"";}s:18:"_1388709088932_932";a:4:{s:10:"country_id";s:2:"LT";s:10:"base_price";s:5:"13.90";s:8:"kg_price";s:1:"0";s:18:"free_shipping_from";s:0:"";}}]]></handling_fee_country>
+                <senddata_service>LO</senddata_service>
+                <po_save_address>0</po_save_address>
+                <label_position>1234</label_position>
+                <return_country>EE</return_country>
+                <senddata_event>manual</senddata_event>
+                <enable_cod>0</enable_cod>
+                <use_per_item_weight>1</use_per_item_weight>
+                <po_show_on_label>0</po_show_on_label>
+                <http_request_timeout>60</http_request_timeout>
+
+            </balticodedpdlt>
+            <balticodedpdltflat>
+                <active>0</active>
+                <title>DPD kulleriga koju või tööle</title>
+                <max_package_weight>31.5</max_package_weight>
+                <drop_menu_selection>1</drop_menu_selection>
+                <disable_session>1</disable_session>
+                <model>balticode_dpdlt/flat</model>
+                <update_interval>1440</update_interval>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>EE,LV,LT</specificcountry>
+                <handling_action>O</handling_action>
+                <handling_fee>7.97</handling_fee>
+                <handling_fee_country><![CDATA[a:3:{s:18:"_1388700940288_288";a:4:{s:10:"country_id";s:2:"EE";s:10:"base_price";s:3:"5.8";s:8:"kg_price";s:4:"1.28";s:18:"free_shipping_from";s:0:"";}s:18:"_1388700961178_178";a:4:{s:10:"country_id";s:2:"LV";s:10:"base_price";s:5:"10.38";s:8:"kg_price";s:4:"3.15";s:18:"free_shipping_from";s:0:"";}s:18:"_1388700962221_221";a:4:{s:10:"country_id";s:2:"LT";s:10:"base_price";s:5:"11.75";s:8:"kg_price";s:4:"3.85";s:18:"free_shipping_from";s:0:"";}}]]></handling_fee_country>
+                <enable_cod>0</enable_cod>
+                <use_per_item_weight>1</use_per_item_weight>
+
+            </balticodedpdltflat>
+        </carriers>
+    </default>
+
+</config>

@@ -1,0 +1,46 @@
+I have packing slips,Man ir pavadlapas
+Auto send data to DPD server,Automātiska datu nosūtīšana uz DPD serveri
+"Envelopes (ā‰¤ 0,5kg)",Aploksnes(<0.5kg)
+"Parcels (ā‰¤ 31,5kg)",Pakas(<31.5kg)
+Pallets,Paletes
+Pickup date,Paņemšanas datums
+Pickup time,Paņemšanas laiks
+ - select pickup date - ,izvēlieties paņemšanas datumu
+Select pickup date first,vispirms izvēlieties paņemšanas datumu
+Courier cannot be called for orders %s,Nav iespējams izsaukt kurjeru pasūtījumiem %s
+Cannot call courier,Nav iespējams izsaukt kurjeru 
+Country,Valsts
+Base shipping price,Sūtīšanas pamatcena
+Price per additional 10kg over base 10kg,"Cena par papildus 10kg, kas pārsniedz pamata 10kg"
+Free shipping from price,Bezmaksas piegāde sākot no
+Add shipping country,Pievienot nosūtītājvalsti
+Comment to courier,Komentārs kurjeram
+Courier comes to pick up your shipment on %1$s between %2$s,"Kurjers ierodadīsies pēc pasūtījuma %1$s, laika posmā no %2$s līdz %3$s"
+and,un
+"Price per country","Cena par valsti"
+"If country is not listed here, but this method is available, then general handling fee is applied","Ja valsts nav pieejama sarakstā, bet piegāde ir atļauta, tad tiek piemērota standarta apkalpošanas maksa"
+Disable this carrier if product's short description contains HTML comment &lt;!-- no dpd_ee_module --&gt;,"Atslēgt šo pārvadātāju, ja produkta apraksts satur HTML komentāru &lt;!-- no dpd_ee_module --&gt;"
+Allow courier pickup,Atļaut pieteikt kurjeru
+DPD Self service username,DPD Self service lietotājvārds
+DPD Self-service password,DPD Self service parole
+When to send parcel data,Kad nosūtīt datus par sūtījumu
+Pickup address name,Paņemšanas adrese - nosaukums
+Pickup address company,Paņemšanas adrese - uzņēmums
+Pickup address e-mail,Paņemšanas adrese - e-pasts
+Pickup address phone,Paņemšanas adreses - tālrunis
+Pickup address street,Paņemšanas adrese - iela
+"Pickup address city, county","Paņemšanas adrese - pilsēta, rajons"
+Pickup address zip code,Paņemšanas adrese - pasta indekss
+Pickup address country,Paņemšanas adrese - valsts
+Show pickup address on packing label,Rādīt paņemšanas adresi uz pavadlapas
+Save address for current customer,Saglabāk klienta adresi
+Labels position on packing slip,Pavadlapas pozīcija iepakošanas sarakstā
+Api URL ,Api URL
+DPD - Dpd.lt - Courier service,DPD - kurjera piegāde
+Position: %s,Pozīcija: %s
+Order courier to pick up goods,Izsaukt kurjeru 
+Tomorrow,Rīt
+Today,Šodien
+Http request timeout,Http pieprasījuma starplaiks
+"If timeout is greater than 10 seconds, then parcel data can only be sent manually. ","Ja starplaiks lielāks par 10sec., datus par sūtījumu var nosūtīt tikai manuāli."
+"DPD - Dpd.lt - SiuntÅ³ taÅkas,","DPD PAKU BODE"

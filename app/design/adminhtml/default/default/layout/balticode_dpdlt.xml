@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_sales_order_index>
+        <reference name="head">
+            <action method="addJs">
+                <script>balticode_js/balticode_dpdlt.js</script>
+            </action>
+            <action method="addCss">
+                <name>balticode_dpdlt.css</name>
+            </action>
+        </reference>
+    </adminhtml_sales_order_index>
+
+</layout>

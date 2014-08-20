@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * or OpenGPL v3 license (GNU Public License V3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * or
+ * http://www.gnu.org/licenses/gpl-3.0.txt
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@balticode.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module to newer
+ * versions in the future.
+ *
+ * @category   Balticode
+ * @package    Balticode_Dpd
+ * @copyright  Copyright (c) 2013 UAB BaltiCode (http://www.balticode.com/)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @license    http://www.gnu.org/licenses/gpl-3.0.txt  GNU Public License V3.0
+ * @author     Matis Halmann
+ * 
+ 
+ */
+-->
+
+
+<config>
+    <sections>
+        <carriers>
+            <groups>
+                <balticodedpdlt translate="label" module="balticode_dpdlt">
+                    <label>DPD - Dpd.lt - Siuntų taškas</label>
+                    <sort_order>198</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[    
+                            <div style="margin-top:4px;margin-bottom:4px; color:gray;"></div>
+                            <div style="margin-top:4px;"><img src="http://balticode.com/bclogo.jpg" alt="UAB BaltiCode"><b>UAB BaltiCode, <a href="mailto:info@balticode.com">info@balticode.com</a></b></div>                                                 
+                            <hr /><br />                                                        
+                            ]]>
+                    </comment>                                                            
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <handling_fee translate="label">
+                            <label>Price</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </handling_fee>
+                        <handling_fee_country translate="label comment">
+                            <label>Price per country</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>balticode_dpdlt/adminhtml_config_form_field_country</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>If country is not listed here, but this method is available, then general handling fee is applied</comment>
+                        </handling_fee_country>
+                        <shortname translate="label">
+                            <label>Show short office names</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Yes: Shows only office name&lt;br/&gt;No: Shows office name and address</comment>
+                        </shortname>
+                        <sort_offices translate="label comment">
+                            <label>Sort offices by priority</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Yes: Offices from bigger cities will be in front&lt;br/&gt;No: Offices are sorted alphabetically&lt;br/&gt;&lt;b&gt;changing this setting requires rebuild&lt;/b&gt;</comment>
+                        </sort_offices>
+                        
+                        <checkitems translate="label">
+                            <label>Disable this carrier if product's short description contains HTML comment &amp;lt;!-- no dpd_ee_module --&amp;gt;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </checkitems>
+                        <max_package_weight translate="label">
+                            <label>Maximum allowed package weight for this carrier</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </max_package_weight>
+                        
+                        <handling_action translate="label comment">
+                            <label>Handling action</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>shipping/source_handlingAction</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Per Order: Shipping cost equals Shipping price&lt;br/&gt;Per Package: Shipping cost equals Number of Items in cart multiplied by shipping price</comment>
+                        </handling_action>
+                        
+                        <enable_free_shipping translate="label">
+                            <label>Enable free shipping</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_free_shipping>
+                        <free_shipping_from translate="label">
+                            <label>Free shipping subtotal</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </free_shipping_from>
+                        
+                        <senddata_enable translate="label">
+                            <label>Auto send data to DPD server</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Only if the order has been paid for or the order is COD</comment>
+                        </senddata_enable>
+                        <courier_enable translate="label">
+                            <label>Allow courier pickup</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1001</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Only if the order has been paid for or the order is COD</comment>
+                        </courier_enable>
+                        
+                        
+                        <sendpackage_username translate="label">
+                            <label>DPD Self service username</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1010</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </sendpackage_username>
+                        <sendpackage_password translate="label">
+                            <label>DPD Self-service password</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>1020</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </sendpackage_password>
+                        <sendpackage_userid translate="label">
+                            <label>DPD User ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1030</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </sendpackage_userid>
+                        
+                        <senddata_event translate="label">
+                            <label>When to send parcel data</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>balticode_postoffice/source_sendevent</source_model>
+                            <sort_order>1040</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </senddata_event>
+                        <http_request_timeout translate="label">
+                            <label>Http request timeout</label>
+                            <comment>If timeout is greater than 10 seconds, then parcel data can only be sent manually. This field with the limitation will be removed latest 17th of February</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1041</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry validate-digits</validate>
+                        </http_request_timeout>
+
+                        <return_name translate="label">
+                            <label>Pickup address name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1050</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </return_name>
+                        <return_company translate="label">
+                            <label>Pickup address company</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1060</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </return_company>
+                        <return_email translate="label">
+                            <label>Pickup address e-mail</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1070</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry validate-email</validate>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                        </return_email>
+                        <return_phone translate="label">
+                            <label>Pickup address phone</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1080</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </return_phone>
+                        <return_street translate="label">
+                            <label>Pickup address street</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1090</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </return_street>
+                        <return_citycounty translate="label">
+                            <label>Pickup address city, county</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </return_citycounty>
+                        <return_postcode translate="label">
+                            <label>Pickup address zip code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </return_postcode>
+                        <return_country translate="label">
+                            <label>Pickup address country</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <sort_order>1120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </return_country>
+                        
+                        <po_show_on_label translate="label">
+                            <label>Show pickup address on packing label</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </po_show_on_label>
+                        <!--po_save_address translate="label">
+                            <label>Save address for current customer</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </po_save_address-->
+                        <label_position translate="label">
+                            <label>Labels position on packing slip</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>balticode_dpdlt/source_label_position</source_model>
+                            <sort_order>1150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </label_position>
+                        <api_url translate="label">
+                            <label>Api URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<ul><li><b>Live:</b> https://dpdintegration.lv/parcel_interface/</li></ul>]]></comment>
+                            <depends>
+                                <senddata_enable>1</senddata_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </api_url>
+                        
+
+
+                        <showmethod translate="label">
+                            <label>Show method if not applicable</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10000</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showmethod>
+                        <specificerrmsg translate="label">
+                            <label>Error message displayed to the user</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificerrmsg>
+                        <sallowspecific translate="label">
+                            <label>Ship to applicable countries</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10110</sort_order>
+                            <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sallowspecific>
+                        <specificcountry translate="label">
+                            <label>Ship to Specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>10120</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <depends>
+                                <sallowspecific>1</sallowspecific>
+                            </depends>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+                        <group_width translate="label comment">
+                            <label>Width in pixels for city select menu</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Use only when you feel that select menu is too wide.</comment>
+                        </group_width>
+                        <office_width translate="label comment">
+                            <label>Width in pixels for office select menu</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Use only when you feel that select menu is too wide.</comment>
+                        </office_width>
+                        <drop_menu_selection translate="label comment">
+                            <label>Show customer one dropdown instead of two</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>If this setting is enabled, then customer will be displayed only with a list of stores you entered.&lt;br/&gt;If this setting is disabled, then customer has to pick country/city first and then customer will be displayed second select menu, which contains stores in the selected county/city.</comment>
+                        </drop_menu_selection>
+                        <disable_session translate="label">
+                            <label>Disable populating list of last selected parcel terminals</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disable_session>
+                        <update_interval translate="label comment">
+                            <label>Update interval for the postoffice list in minutes</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>It is not recommended to update the list of offices more often than once a day.</comment>
+                        </update_interval>
+                        <!--enable_cod translate="label comment">
+                            <label>Enable Cash on Delivery (requires extra plugin)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_cod>
+                        <cod_fee translate="label">
+                            <label>Extra fee, when using Cash on delivery</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable_cod>1</enable_cod>
+                            </depends>
+                        </cod_fee-->
+                        <rebuild_all translate="label comment">
+                            <label>Rebuild Postoffice List</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>99999</sort_order>
+                            <frontend_model>balticode_postoffice/config_rebuildbutton</frontend_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>If post offices are not displayed correctly, then rebuilding the list may help</comment>
+                        </rebuild_all>
+                        <sort_order translate="label">
+                            <label>Sort order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1000000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <removal translate="">
+                            <label></label>
+                            <frontend_model>balticode_postoffice/adminhtml_config_form_field_remove</frontend_model>
+                            <sort_order>1000001</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </removal>
+                    </fields>
+                </balticodedpdlt>
+                <balticodedpdltflat translate="label" module="balticode_dpdlt">
+                    <label>DPD - Dpd.lt - Courier service</label>
+                    <sort_order>199</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[    
+                            <div style="margin-top:4px;margin-bottom:4px; color:gray;"></div>
+                            <div style="margin-top:4px;"><img src="http://balticode.com/bclogo.jpg" alt="UAB BaltiCode"><b>UAB BaltiCode, <a href="mailto:info@balticode.com">info@balticode.com</a></b></div>                                                 
+                            <hr /><br />                                                        
+                            ]]>
+                    </comment>                                                            
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <handling_fee translate="label">
+                            <label>Price</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </handling_fee>
+                        <handling_fee_country translate="label comment">
+                            <label>Price per country</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>balticode_dpdlt/adminhtml_config_form_field_country</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>If country is not listed here, but this method is available, then general handling fee is applied</comment>
+                        </handling_fee_country>
+                        
+                        <checkitems translate="label">
+                            <label>Disable this carrier if product's short description contains HTML comment &amp;lt;!-- no dpd_ee_module --&amp;gt;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </checkitems>
+                        <max_package_weight translate="label">
+                            <label>Maximum allowed package weight for this carrier</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </max_package_weight>
+                        
+                        <handling_action translate="label comment">
+                            <label>Handling action</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>shipping/source_handlingAction</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Per Order: Shipping cost equals Shipping price&lt;br/&gt;Per Package: Shipping cost equals Number of Items in cart multiplied by shipping price</comment>
+                        </handling_action>
+                        
+                        <enable_free_shipping translate="label">
+                            <label>Enable free shipping</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_free_shipping>
+                        <free_shipping_from translate="label">
+                            <label>Free shipping subtotal</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </free_shipping_from>
+                        
+                        
+
+
+                        <showmethod translate="label">
+                            <label>Show method if not applicable</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10000</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showmethod>
+                        <specificerrmsg translate="label">
+                            <label>Error message displayed to the user</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificerrmsg>
+                        <sallowspecific translate="label">
+                            <label>Ship to applicable countries</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10110</sort_order>
+                            <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sallowspecific>
+                        <specificcountry translate="label">
+                            <label>Ship to Specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>10120</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <depends>
+                                <sallowspecific>1</sallowspecific>
+                            </depends>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+                        <!--enable_cod translate="label comment">
+                            <label>Enable Cash on Delivery (requires extra plugin)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_cod>
+                        <cod_fee translate="label">
+                            <label>Extra fee, when using Cash on delivery</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable_cod>1</enable_cod>
+                            </depends>
+                        </cod_fee-->
+                        <sort_order translate="label">
+                            <label>Sort order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1000000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <removal translate="">
+                            <label></label>
+                            <frontend_model>balticode_postoffice/adminhtml_config_form_field_remove</frontend_model>
+                            <sort_order>1000001</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </removal>
+                        
+                    </fields>
+                </balticodedpdltflat>
+                
+            </groups>
+        </carriers>
+    </sections>
+    
+</config>

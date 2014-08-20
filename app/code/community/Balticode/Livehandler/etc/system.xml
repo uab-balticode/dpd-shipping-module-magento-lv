@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * or OpenGPL v3 license (GNU Public License V3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * or
+ * http://www.gnu.org/licenses/gpl-3.0.txt
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@balticode.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module to newer
+ * versions in the future.
+ *
+ * @category   Balticode
+ * @package    Balticode_Livehandler
+ * @copyright  Copyright (c) 2013 Aktsiamaailm LLC (http://en.balticode.com/)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @license    http://www.gnu.org/licenses/gpl-3.0.txt  GNU Public License V3.0
+ * @author     Matis Halmann
+ * 
+ 
+ */
+-->
+
+
+<config>
+    <tabs>
+        <balticode translate="label" module="balticode_livehandler">
+            <label>Balticode Moodulid</label>
+            <sort_order>300</sort_order>
+        </balticode>
+    </tabs>
+    <sections>
+        <balticode_livehandler translate="label" module="balticode_livehandler">
+            <label>Balticode Livehandler</label>
+            <tab>balticode</tab>
+            <sort_order>340</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <main translate="label" module="balticode_livehandler">
+                    <label>Global Livehandler settings</label>
+                    <tab>balticode</tab>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                    </fields>
+                </main>
+                <admintools translate="label" module="balticode_livehandler">
+                    <label>Admin Order Grid Helper</label>
+                    <tab>balticode</tab>
+                    <sort_order>340</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[    
+                            <div style="margin-top:4px;margin-bottom:4px; color:gray;"></div>
+                            <div style="margin-top:4px;"><img src="http://balticode.com/bclogo.jpg" alt="UAB BaltiCode"><b>UAB BaltiCode, <a href="mailto:info@balticode.com">info@balticode.com</a></b></div>                                                 
+                            <hr /><br />                                                        
+                            ]]>
+                    </comment>                                                            
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <open_in_new translate="label">
+                            <label>Open Order in new window when clicking on Order status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </open_in_new>
+                        <buttons translate="">
+                            <label></label>
+                            <frontend_model>balticode_livehandler/adminhtml_config_form_field_button</frontend_model>
+                            <backend_model>balticode_livehandler/system_config_backend_button</backend_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </buttons>
+                        <removal translate="">
+                            <label></label>
+                            <frontend_model>balticode_livehandler/adminhtml_config_form_field_remove</frontend_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </removal>
+                    </fields>
+                    
+                </admintools>
+                
+            </groups>
+        </balticode_livehandler>
+    </sections>
+    
+</config>
