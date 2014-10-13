@@ -335,7 +335,10 @@ $table .='<table border="0" cellspacing="0" cellpadding="0" width="747px;" style
 
 
             $_today = date('Y-m-d H:i:s');
-            $date = new Zend_Date($_today);
+            $locale = new Zend_Locale('lv_LV');
+            $_date = new Zend_Date( $_today, null, $locale);
+            $date = $_date->get('YYYY-MM-dd HH:mm:ss');
+
             $cfooter='<page_footer style="width: 100%;">
                     <table class="page_footer" style="width: 100%;">
                     <tr style="border-top:1px solid #000000">
