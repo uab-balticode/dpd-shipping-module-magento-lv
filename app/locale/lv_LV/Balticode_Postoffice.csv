@@ -7,7 +7,7 @@ After successful checkout,Pēc sekmīgas norēķināšanās
 After successful shipment creation,Pēc sekmīgas sūtījuma izveides
 select ,izvēlieties
 I will send data myself by clicking on the button,"Es nosūtīšu datus pats, nospiežot pogu"
-Print packing slip,Izdrukāt manifestu
+Print packing slip,Izdrukāt pavadlapu
 Send shipping data to server,Nosutīt datus uz serveri
 "Data sent to server, please verify the status from the order comments","Dati nosūtīti uz serveri, lūdzu pārbaudiet statusu pasūtījuma komentāros"
 Disable populating list of last selected parcel terminals,Atslēgt pēdējo izvēlēto PAKU BODE punktu sarakstu aizpildi
