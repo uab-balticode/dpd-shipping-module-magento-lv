@@ -17,4 +17,14 @@ public function addDpdAction($observer)
         ));
     }
 }
+    public function preDispatch(Varien_Event_Observer $observer)
+    {
+        if (Mage::getSingleton('admin/session')->isLoggedIn()) {
+            $feedModel  = Mage::getModel('Balticode_Livehandler_model_feed');
+            /* @var $feedModel Mage_AdminNotification_Model_Feed */
+
+            $feedModel->checkUpdate();
+        }
+
+    }
 }

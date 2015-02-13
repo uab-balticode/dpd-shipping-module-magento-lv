@@ -82,6 +82,14 @@
                     </Balticode_Livehandler_Model_Observer>
                 </observers>
             </core_block_abstract_prepare_layout_before>
+            <controller_action_predispatch>
+                <observers>
+                    <balticode_livehandler>
+                        <class>Balticode_Livehandler_Model_Observer</class>
+                        <method>preDispatch</method>
+                    </balticode_livehandler>
+                </observers>
+            </controller_action_predispatch>
         </events>
         <translate>
             <modules>

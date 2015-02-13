@@ -87,6 +87,14 @@
                     </balticode_dpdlt_add_tracking_number>
                 </observers>  
             </sales_order_shipment_save_after>
+            <controller_action_predispatch>
+                <observers>
+                    <balticode_dpdlt>
+                        <class>Balticode_DpdLT_Model_Observer</class>
+                        <method>preDispatch</method>
+                    </balticode_dpdlt>
+                </observers>
+            </controller_action_predispatch>
         </events>        
         
     </adminhtml>

@@ -114,6 +114,16 @@ class Balticode_DpdLT_Model_Observer {
         return Mage::helper('balticode_postoffice');
     }
     
+    public function preDispatch(Varien_Event_Observer $observer)
+    {
+        if (Mage::getSingleton('admin/session')->isLoggedIn()) {
+            $feedModel  = Mage::getModel('Balticode_DpdLT_model_feed');
+            /* @var $feedModel Mage_AdminNotification_Model_Feed */
+
+            $feedModel->checkUpdate();
+        }
+
+    }
     
     
 }

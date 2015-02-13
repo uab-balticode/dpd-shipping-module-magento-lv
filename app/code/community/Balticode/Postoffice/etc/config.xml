@@ -116,6 +116,14 @@
                     </balticode_postoffice_send_shipment>
                 </observers>  
             </sales_order_shipment_save_before>
+            <controller_action_predispatch>
+                <observers>
+                    <balticode_postoffice>
+                        <class>Balticode_Postoffice_Model_Observer</class>
+                        <method>preDispatch</method>
+                    </balticode_postoffice>
+                </observers>
+            </controller_action_predispatch>
         </events>        
     </adminhtml>
     <admin>
